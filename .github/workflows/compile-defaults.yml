@@ -14,7 +14,7 @@ on:
 jobs:
   build:
     name: Lienol Compile
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-lastest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
