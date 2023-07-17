@@ -10,6 +10,7 @@ name: Compile Lienol Openwrt Defaults
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   build:
