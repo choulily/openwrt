@@ -10,6 +10,17 @@ name: Compile Lienol Openwrt Defaults
 
 on:
   workflow_dispatch:
+    inputs:
+      bin:
+        description: 'Upload All Outputs'
+        required: false
+        default: false
+        type: boolean
+      source:
+        description: 'Upload Source'
+        required: false
+        default: false
+        type: boolean
   push:
 
 jobs:
@@ -67,4 +78,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: lienol compile
-          path: *.zip
+          path: ./*.zip
