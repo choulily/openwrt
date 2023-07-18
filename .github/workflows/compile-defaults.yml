@@ -6,7 +6,7 @@
 # Modified OpenWRT source code from Lienol
 #   [https://github.com/lienol/openwrt]
 #
-name: Compile Lienol Openwrt Defaults
+name: Compile Lienol Openwrt x86_64 Defaults
 
 on:
   workflow_dispatch:
