@@ -16,7 +16,7 @@ on:
         default: false
         type: boolean
       source:
-        description: 'Upload Source
+        description: 'Upload Source'
         required: false
         default: false
         type: boolean
