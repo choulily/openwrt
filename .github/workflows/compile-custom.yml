@@ -55,7 +55,7 @@ jobs:
       - name: ZIP Images
         if: inputs.bin == false
         run: |
-          zip -r images.zip ./bin/target/*
+          zip -r images.zip ./bin/targets/*
 
       - name: ZIP ipks
         if: inputs.bin == false
