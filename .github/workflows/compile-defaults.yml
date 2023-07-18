@@ -25,7 +25,46 @@ jobs:
           sudo apt-get update
           sudo apt-get -y install build-essential asciidoc binutils bzip2 curl gawk gettext git libncurses5-dev libz-dev patch python3.5 python2.7 unzip zlib1g-dev lib32gcc-s1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf tree
 
-      - name: Directory Debuging
+      - name: Setup Feeds
         run: |
-          tree ~/
-          ls
+          ./scirpts/feeds clean
+          ./scirpts/feeds update -a
+          ./scirpts/feeds install -a
+
+      - name: Setup Image Configuration
+        run: |
+          mv config.defaults .config
+
+      - name: Download Source
+        run: |
+          make download -j8 || make download -j1 V=s
+
+      - name: Image Compile
+        run: |
+          make -j$(nproc) || make -j1 V=s
+      
+      - name: ZIP Images
+        if: inputs.bin == false
+        run: |
+          zip -r images.zip ./bin/target/*
+
+      - name: ZIP ipks
+        if: inputs.bin == false
+        run: |
+          zip -r ipks.zip ./bin/packages/*
+
+      - name: ZIP all outputs
+        if: inputs.bin == true
+        run: |
+          zip -r bins.zip ./bin/*
+
+      - name: ZIP Source
+        if: inputs.source == true
+        run: |
+          zip -r source.zip ./*
+
+      - name: Upload everything
+        uses: actions/upload-artifact@v3
+        with:
+          name: lienol compile
+          path: *.zip
