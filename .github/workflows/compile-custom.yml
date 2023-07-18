@@ -37,8 +37,8 @@ jobs:
       - name: Setup Feeds
         run: |
           cat feeds.custom >> feeds.conf.default
-          ./scirpts/feeds update -a
-          ./scirpts/feeds install -a
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
 
       - name: Setup Image Configuration
         run: |

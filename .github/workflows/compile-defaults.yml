@@ -38,9 +38,9 @@ jobs:
 
       - name: Setup Feeds
         run: |
-          ./scirpts/feeds clean
-          ./scirpts/feeds update -a
-          ./scirpts/feeds install -a
+          ./scripts/feeds clean
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
 
       - name: Setup Image Configuration
         run: |
