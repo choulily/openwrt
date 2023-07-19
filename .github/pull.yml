@@ -1,0 +1,5 @@
+version: "1"
+rules:
+  - base: 23.05
+    upstream: lienol:23.05
+    mergeMethod: none
